@@ -11,36 +11,36 @@ public class Stop {
 
     public Stop(String in) {
 
-        String[] inputValues = in.split(",");
+        String[] input = in.split(",");
 
         try {
-            this.stop_id = Integer.parseInt(inputValues[0]);
+            this.stop_id = Integer.parseInt(input[0]);
         } catch (Exception e) {
             this.stop_id = -1;
         }
 
         try {
-            this.stop_code = Integer.parseInt(inputValues[1]);
+            this.stop_code = Integer.parseInt(input[1]);
         } catch (Exception e) {
             this.stop_code = -1;
         }
 
-        this.stop_name = rearrange(inputValues[2]);
+        this.stop_name = rearrange(input[2]);
 
-        this.stop_desc = inputValues[3];
+        this.stop_desc = input[3];
 
         try {
-            this.stop_lat = Double.parseDouble(inputValues[4]);
+            this.stop_lat = Double.parseDouble(input[4]);
         } catch (Exception e) {
             this.stop_id = -1;
         }
         try {
-            this.stop_lon = Double.parseDouble(inputValues[5]);
+            this.stop_lon = Double.parseDouble(input[5]);
         } catch (Exception e) {
             this.stop_id = -1;
         }
 
-        this.zone_id = inputValues[6];
+        this.zone_id = input[6];
 
     }
 
@@ -64,7 +64,45 @@ public class Stop {
             return in.substring(3) + " EB";
         } else
             return in;
-
     }
 
+    public String getID() {
+        if (stop_id == -1) {
+            return "NA";
+        } else
+            return "" + this.stop_id;
+    }
+
+    public String getCode() {
+        if (stop_code == -1) {
+            return "NA";
+        } else
+            return "" + this.stop_code;
+    }
+
+    public String getName() {
+        return this.stop_name;
+    }
+
+    public String getDesc() {
+        return this.stop_desc;
+    }
+
+    public String getLat() {
+        if (stop_lat == -1) {
+            return "NA";
+        } else
+            return "" + this.stop_lat;
+    }
+
+    public String getLon() {
+        if (stop_lon == -1) {
+            return "NA";
+        } else
+            return "" + this.stop_lon;
+    }
+
+    public String getZone() {
+        return this.zone_id;
+    }
 }
